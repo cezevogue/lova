@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaser</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/css/bootstrap.min.css"
+        integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+        }
+
+
+
+        body {
+            /*empêche le défilement sur les appareils mobiles*/
+
+            background-image: url('predation2.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            /*overflow: hidden;*/
+        }
+
+
+        .entete {
+            position: relative;
+            top: 2vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .entete img {
+            width: 9rem;
+        }
+
+        #playButton {
+            background: transparent;
+            border: none;
+
+        }
+
+        #playButton img {
+            width: 2rem;
+        }
+
+        #pauseIcon {
+            display: none;
+        }
+
+        .entete p {
+            padding: 1rem;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .titre {
+            color: rgb(241, 241, 234);
+            text-align: center;
+        }
+
+        .affiche {
+            position: relative;
+            top: 1vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        label {
+            font-family: 'Iceland', cursive;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: white;
+
+        }
+
+
+
+        .reseauSociaux {
+            position: relative;
+            top: 2vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 10vh;
+            bottom: 2vh;
+        }
+
+        #reseaux-sociaux img {
+            position: absolute;
+            bottom: -10vh;
+            left: 45vw;
+            transition: all 2s;
+        }
+
+        .box {
+            display: flex;
+        }
+
+        #checkbox {
+            width: 3.125rem;
+            height: 3.125rem;
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+            outline: none;
+            position: relative;
+        }
+
+        #checkbox:hover,
+        .menu .menuItems:hover {
+            background: transparent;
+        }
+
+        #checkbox::before {
+            /* code dans checkbox et fontawesone*/
+            content: url('icons8-discorde.png');
+            font-family: 'fontawesone 5 free';
+            font-weight: 700;
+            font-size: 1.5rem;
+            position: absolute;
+            background: transparent;
+            /*centré*/
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgb(41, 41, 41);
+            transition: all 1.5s;
+        }
+
+        #checkbox:checked::before {
+            content: url('fermer.png');
+            background: transparent;
+
+        }
+
+        /*afficher menu*/
+        .menu {
+            width: 0;
+            overflow: hidden;
+            display: flex;
+            transition: all .5s;
+        }
+
+        .menu .menuItems {
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            /*border-left: 1px solid rgb(165, 165, 165);*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /*~ le menu va afficher*/
+        #checkbox:checked~.menu {
+            width: 306px;
+            /* 6*50 +6*1 bordure*/
+        }
+
+        .menu .menuItems i {
+            font-size: 1.8rem;
+        }
+
+        .fa-whatsapp {
+            color: #25d366;
+        }
+
+        .fa-instagram {
+            color: #c32aa3;
+        }
+
+        .fa-facebook {
+            color: #4e869d;
+        }
+
+        .fa-twitter {
+            color: #1da1f2;
+        }
+
+        .fa-discord {
+            color: #cb4cd4;
+        }
+
+        /* Styles spécifiques aux appareils de taille supérieure */
+        @media (min-width: 768px) {
+            body {
+                overflow: auto;
+            }
+            .entete p {
+            padding: 2rem;
+           
+            font-size: 1.5rem;
+        }
+        label {
+         
+            font-size: 3em;
+          
+
+        }
+        }
+    </style>
+
+
+
+
+    <main class="min-vh-100 d-flex  flex-column justify-content-around">
+        <!-- min-vh-100 couvre le body -->
+
+
+
+        <div class="entete">
+
+            <img src="starisland.png" alt="logo">
+            <audio id="myAudio" src="audio.mp3"></audio>
+
+            <button id="playButton" onclick="toggleAudio()">
+                <img id="playIcon" src="haut-parleur.png" alt="Play">
+                <img id="pauseIcon" src="pause.png" alt="Pause">
+            </button>
+
+
+
+            <div class="titre">
+                <h1>Star Island</h1>
+                <p>Plongez dans l'univers captivant de Star'Island, un serveur de jeu gratuit et en mode freetoplay!
+                    Rejoignez une communauté passionnée et vivez des aventures palpitantes dans un monde inspiré de
+                    GTA 5. Bienvenue dans l'univers de Star'Island, où le divertissement et l'action ne connaissent
+                    aucune limite</p>
+            </div>
+        </div>
+        <div class="affiche">
+            <label class="text-white" id="jour"></label>
+            <label class="text-white" id="heure"></label>
+            <label class="text-white" id="min"></label>
+            <label class="text-white" id="sec"></label>
+
+        </div>
+
+
+        <div class="reseauSociaux">
+
+            <div class="box">
+                <input type="checkbox" id="checkbox">
+                <!--checkbox-->
+                <!--Menu-->
+                <div class="menu">
+                    <a href="#">
+                        <div class="menuItems">
+                            <i class="fab fa-whatsapp"></i>
+
+                        </div>
+
+                    </a>
+                    <a href="#">
+                        <div class="menuItems">
+                            <i class="fab fa-instagram"></i>
+
+                        </div>
+
+                    </a>
+
+                    <a href="#">
+                        <div class="menuItems">
+                            <i class="fab fa-facebook"></i>
+
+                        </div>
+
+                    </a>
+                    <a href="#">
+                        <div class="menuItems">
+                            <i class="fab fa-twitter"></i>
+
+                        </div>
+
+                    </a>
+                    <a href="#">
+                        <div class="menuItems">
+                            <i class="fab fa-discord"></i>
+
+                        </div>
+
+                    </a>
+                    <a href="#">
+                        <div class="menuItems">
+                            <i class="fab fa-linkedin"></i>
+
+                        </div>
+
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
+    <script>
+        //var Affiche = document.getElementById("compte");
+        var jour = document.getElementById("jour");
+        var heure = document.getElementById("heure");
+        var min = document.getElementById("min");
+        var seconde = document.getElementById("sec");
+        function Rebour() {
+            var date1 = new Date();
+            var date2 = new Date("Jun 31, 2023 00:00:00");
+            var sec = (date2 - date1) / 1000;
+            var n = 24 * 3600;
+            if (sec > 0) {
+                j = Math.floor(sec / n);
+                h = Math.floor((sec - (j * n)) / 3600);
+                mn = Math.floor((sec - ((j * n + h * 3600))) / 60);
+
+                sec = Math.floor(sec - ((j * n + h * 3600 + mn * 60)));
+
+                jour.innerHTML = "" + j + " j ";
+                heure.innerHTML = "" + h + " h ";
+                min.innerHTML = "" + mn + " min ";
+                seconde.innerHTML = "" + sec + " s ";
+
+                window.status = "Temps restant : " + j + " j " + h + " h " + mn + " min " + sec + " s ";
+            }
+            tRebour = setTimeout("Rebour();", 1000);
+        }
+
+
+        Rebour();
+        function toggleAudio() {
+            const audio = document.getElementById("myAudio");
+            const playButton = document.getElementById("playButton");
+            const playIcon = document.getElementById("playIcon");
+            const pauseIcon = document.getElementById("pauseIcon");
+
+            if (audio.paused) {
+                audio.play();
+                playIcon.style.display = "none";
+                pauseIcon.style.display = "inline";
+            } else {
+                audio.pause();
+                playIcon.style.display = "inline";
+                pauseIcon.style.display = "none";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
